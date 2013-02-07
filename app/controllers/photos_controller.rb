@@ -4,7 +4,6 @@ class PhotosController < ApplicationController
 
   def index
     @photos = Photo.all
-    @users = @photos.map {|p| p.user }
     respond_with(@photos)
   end
 

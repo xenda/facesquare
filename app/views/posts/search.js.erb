@@ -1,0 +1,4 @@
+$("#results").fadeOut(500);
+$("#results").html("<%= escape_javascript(render("results", posts: @posts)) %>");
+$("#results").fadeIn(500);
+alert("Hey")

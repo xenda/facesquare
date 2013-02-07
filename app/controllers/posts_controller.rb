@@ -3,11 +3,15 @@ class PostsController < ApplicationController
 
   def search
     query = params[:query]
+
+
+
     @posts = Post.where("title like ? ", "%#{query}%").order(:title)
     respond_to do |forma|
       forma.html { render "index" }
       forma.json { render json: @posts } 
       forma.xml { render xml: @posts } 
+      forma.js
     end
   end
 
@@ -21,14 +25,16 @@ class PostsController < ApplicationController
 
     date = Date.new(year.to_i, month.to_i, day.to_i)
     @posts = Post.where(created_at: date)
-    render "index"
+    # render "index"
   end
 
   def index
     @posts = Post.all
+    @post  = Post.new
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @posts }
+      format.js
+      format.json #{ render json: @posts }
     end
   end
 

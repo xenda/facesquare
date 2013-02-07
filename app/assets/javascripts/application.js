@@ -13,3 +13,29 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function() {
+  $("#post_form").hide();
+});
+
+
+$(document).on("click", "#new_post_link", function(event){
+  // event.stopPropagation();
+  $("#post_form").slideToggle();
+  return false;
+});
+
+
+window.Facesquare = {
+  realtime : (function() {
+    return {
+      add : function(message) {
+
+        $( "<li/>", {
+          text: message
+        }).appendTo( "#realtime-ticker" );
+
+      }
+    };
+  })()
+};

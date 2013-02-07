@@ -2,15 +2,31 @@
 <html>
 <head>
   <title>Facesquare</title>
+  <link href='http://fonts.googleapis.com/css?family=Medula+One' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1>OMG MY SUPER APP</h1>
-<%= yield %>
+  <header>
+    <div class="wrapper">
+
+      <h1><%= link_to "Facesquare", root_path %></h1>
+      <nav>
+        <ul>
+          <li><%= link_to "Login With Facebook", "#" %></li>
+        </ul>
+      </nav>
+
+    </div>
+
+  </header><!-- /header -->
+
+  <div class="wrapper">
+    <%= yield %>
+  </div>
 <footer>
-  <h2>Hi!</h2>
+  <p>Maded with love at <%= link_to "http://railscourse.com" %></p>
 </footer>
 </body>
 </html>

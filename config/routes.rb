@@ -1,10 +1,12 @@
 Facesquare::Application.routes.draw do
 
+  resources :photo_posts
+
+
   resources :photos
 
   match "fotos" => "users#index"
 
-  get "/posts/:year(/:month(/:day))" => "posts#filter" ,  :constraints => {:day => /\d*/}
 
   get "search(/:query)(/:otro)" => "posts#search"
   resources :users

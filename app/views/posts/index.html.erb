@@ -1,29 +1,19 @@
-<h1>Listing posts</h1>
+<h1>&iquest;Qu&eacute; est&aacute;s haciendo?</h1>
 
-<table>
-  <tr>
-    <th>Content</th>
-    <th>Title</th>
-    <th>Kind</th>
-    <th>Published at</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="content">
+  <%= link_to "Publicar", new_post_path, id: "new_post_link", class: "button" %>
+  <div id="post_form">
+    <%= render "form" %>
+  </div>
+  <%= render "results", posts: @posts %>
+</div>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.content %></td>
-    <td><%= post.title %></td>
-    <td><%= post.kind %></td>
-    <td><%= post.published_at %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<div class="sidebar">
+  <div class="block">
+    <h2>&iquest;Qu&eacute; est&aacute; sucediendo?</h2>
+    <ul id="realtime-ticker">
+      <li>Demo thing</li>
+    </ul>
+  </div>
+</div>
 
-<br />
-
-<%= link_to 'New Post', new_post_path %>
