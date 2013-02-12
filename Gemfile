@@ -22,7 +22,7 @@ end
 
 gem 'jquery-rails'#, :plaforms => :win
 gem 'haml'
-
+gem "pusher"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

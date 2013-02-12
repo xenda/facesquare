@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :content, :kind, :published_at, :title, :photo_ids
+  attr_accessible :content, :kind, :published_at, :title, :photo_ids, :user_id
 
   belongs_to :user
   has_many :photo_posts

@@ -13,6 +13,9 @@
     <h2>&iquest;Qu&eacute; est&aacute; sucediendo?</h2>
     <ul id="realtime-ticker">
       <li>Demo thing</li>
+      <% @posts.each do |post| %>
+        <li><%= post.content %></li>
+      <% end %>
     </ul>
   </div>
 </div>

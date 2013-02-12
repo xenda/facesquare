@@ -28,5 +28,27 @@
 <footer>
   <p>Maded with love at <%= link_to "http://railscourse.com" %></p>
 </footer>
+
+<script src="http://js.pusher.com/1.12/pusher.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    // Enable pusher logging - don't include this in production
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) window.console.log(message);
+    };
+
+    // Flash fallback logging - don't include this in production
+    WEB_SOCKET_DEBUG = true;
+
+    var pusher = new Pusher('9e48ffcf2ec64b6ac15c');
+    var channel = pusher.subscribe('facesquare');
+    channel.bind('post:create', function(data) {
+      Facesquare.realtime.add(data.content + "en " + data.published_at)
+    });
+  </script>
+
+
+
+
+
 </body>
 </html>

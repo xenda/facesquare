@@ -1,9 +1,9 @@
-<%= simple_form_for(@post) do |f| %>
+<%= simple_form_for(@post, remote: true) do |f| %>
     <%= f.input :content %><br />
     <%= f.input :title %><br />
     <%= f.input :kind %><br />
     <%= f.input :published_at %><br />
-    <%= f.association :user, as: :radio_buttons, collection: User.dead.order(:name).where(name: "Alvaro").active %>
+    <%= f.association :user %>
     <%= f.association :photos, as: :check_boxes %>
     <%= f.submit %>
 <% end %>

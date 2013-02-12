@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.order("created_at DESC")
     @post  = Post.new
     respond_to do |format|
       format.html # index.html.erb
@@ -72,8 +72,16 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+
+        Pusher.app_id = '36971'
+        Pusher.key = '9e48ffcf2ec64b6ac15c'
+        Pusher.secret = 'da013580f44115ee11a7'
+        Pusher['facesquare'].trigger('post:create', @post.to_json)
+
+
+        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -88,8 +96,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
+
       else
         format.html { render action: "edit" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -104,7 +113,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end
