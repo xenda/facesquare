@@ -8,6 +8,12 @@ Facesquare::Application.routes.draw do
   match "fotos" => "users#index"
 
 
+  # auth/twitter/callback
+  # auth/facebook/callback
+  # auth/foursquare/callback
+  get "/auth/:provider/callback" => "sessions#create"
+  get "/sign_out" => "sessions#destroy"
+
   get "search(/:query)(/:otro)" => "posts#search"
   resources :users
   resources :posts

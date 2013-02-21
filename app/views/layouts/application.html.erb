@@ -14,8 +14,16 @@
       <h1><%= link_to "Facesquare", root_path %></h1>
       <nav>
         <ul>
-          <li><%= link_to "Login With Facebook", "#" %></li>
+          <% if session["current_user"] %>
+            <li>Bienvenido <%= session["name"] %> <%= image_tag session["image"] %></li>
+            <li><%= link_to "Salir de la sesi&oacute;n", "/sign_out" %></li>
+          <% else %>
+            <li><%= link_to "Login With Facebook", "/auth/facebook" %></li>
+            <li><%= link_to "Login With Twitter", "/auth/twitter" %></li>
+            <li><%= link_to "Login With Foursquare", "/auth/foursquare" %></li>
+          <% end %>
         </ul>
+
       </nav>
 
     </div>

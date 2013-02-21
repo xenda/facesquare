@@ -23,6 +23,10 @@ end
 gem 'jquery-rails'#, :plaforms => :win
 gem 'haml'
 gem "pusher"
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-foursquare'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

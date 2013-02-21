@@ -67,9 +67,13 @@ class PostsController < ApplicationController
 
   # POST /posts
   # POST /posts.json
+  def current_user
+    User.find(session[:current_user])
+  end
+
   def create
     @post = Post.new(params[:post])
-
+    # @post = current_user.posts.build
     respond_to do |format|
       if @post.save
 
